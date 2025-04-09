@@ -449,7 +449,6 @@ button:hover, .search-btn:hover, .close-modal:hover, #start-compare-btn:hover, #
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;
-    pointer-events: none;
 }
 
 .stat-list li { padding: 2px; }
