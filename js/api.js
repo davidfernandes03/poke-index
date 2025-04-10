@@ -1,3 +1,4 @@
+// Endpoint 1
 const baseURL = "https://pokeapi.co/api/v2/";
 
 export async function fetchPokemon(query) {
@@ -60,23 +61,26 @@ export async function fetchPokemonsByGeneration(generation) {
     }
 }
 
+export async function fetchAllPokemonNames() {
+    const response = await fetch(`${baseURL}pokemon?limit=100000&offset=0`);
+    const data = await response.json();
+    return data.results.map(p => p.name);
+}
+
+// Endpoint 2
+const speciesURL = "https://pokeapi.co/api/v2/pokemon-species/";
+
 export async function fetchPokemonSpecies(query) {
     if (typeof query !== "string") {
         query = String(query);
     }
 
     try {
-        const response = await fetch(`${baseURL}pokemon-species/${query.toLowerCase()}`);
+        const response = await fetch(`${speciesURL}${query.toLowerCase()}`);
         if (!response.ok) throw new Error("Species not found!");
         return await response.json();
     } catch (error) {
         console.error("Error fetching species data:", error);
         return null;
     }
-}
-
-export async function fetchAllPokemonNames() {
-    const response = await fetch(`${baseURL}pokemon?limit=100000&offset=0`);
-    const data = await response.json();
-    return data.results.map(p => p.name);
 }

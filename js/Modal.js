@@ -5,6 +5,7 @@ function getFavorites() {
     return JSON.parse(localStorage.getItem("favorites")) || [];
 }
 function saveFavorites(favs) {
+    // Local Storage
     localStorage.setItem("favorites", JSON.stringify(favs));
 }
 function isFavorited(id) {

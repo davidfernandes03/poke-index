@@ -2,6 +2,7 @@ import { openPokemonModal } from "./Modal.js";
 import { setupCarousel } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Local Storage
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     displayFavorites(favorites);
 });
